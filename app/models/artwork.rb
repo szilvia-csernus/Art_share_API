@@ -6,4 +6,5 @@ class Artwork < ApplicationRecord
 
     has_many :artwork_shares, dependent: :destroy
     has_many :shared_viewers, through: :artwork_shares, source: :viewer, dependent: :destroy
+    has_many :comments, dependent: :destroy
 end
