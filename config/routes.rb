@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :artworks, only: [:create, :show, :update, :destroy]
   resources :artworkshares, only: [:create, :destroy]
   resources :comments, only: [:index, :create, :destroy]
+  resources :likes, only: [:index, :create, :destroy]
 
   resources :users do
     resources :artworks
@@ -19,7 +20,19 @@ Rails.application.routes.draw do
     resources :comments
   end
 
+  resources :users do
+    resources :likes
+  end
+
   resources :artworks do
     resources :comments
+  end
+
+  resources :artworks do
+    resources :likes
+  end
+
+  resources :comments do
+    resources :likes
   end
 end
